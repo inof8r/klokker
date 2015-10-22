@@ -1,0 +1,39 @@
+<div class="container-fluid">
+		<div class="mainheader">    
+		    Projects
+    	</div>    
+
+  <div class="row">
+    <div class="col-md-2">
+      <!--Sidebar content-->
+<div class="row">
+    <div class="col-md-12">
+	<div class="mainbutton" style="width:120px;">
+		<a href="#/home" class="thumb">Back</a>
+	</div>
+	</div>	
+</div>
+
+      Search: <input ng-model="query">
+      Sort by:
+      <select ng-model="orderProp">
+        <option value="name">Alphabetical</option>
+        <option value="age">Latest</option>
+      </select>
+
+    </div>
+    <div class="col-md-10">
+      <!--Body content-->
+
+      <ul class="phones">
+        <li ng-repeat="project in projects | filter:query | orderBy:orderProp"
+            class="thumbnail phone-listing">
+          <a href="#/projects/{{project.id}}" class="thumb"><img ng-src="{{project.imageUrl}}"></a>
+          <a href="#/projects/{{project.id}}">{{project.projectname}}</a>
+          <p>{{project.description}}</p>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>

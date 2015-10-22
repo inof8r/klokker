@@ -1,0 +1,182 @@
+/* app css stylesheet */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: auto;
+
+}
+.mainheader {
+  margin-top: -10px;
+	font-size: 1.4em;  
+	height: 60px; 
+	background-color:#ff0000;
+	color:#ffffff;
+	line-height: 60px; 
+
+}
+
+h1 {
+  margin-top: 30px;
+}
+
+.mainmenu {
+ height: 100%;
+  width: 100%;
+  font-size: 2.2em;  
+  text-align:center;
+
+}
+.mainmenu-item {
+  float: left;
+
+
+  height: 100px;
+  line-height: 100px;
+  width: 100%;
+}
+
+.mainbutton {
+  font-size: 1.2em;  
+width: auto; 
+height: 60px; 
+line-height: 60px; 
+text-align:center;
+ background:#cccccc;
+}
+
+
+.phone-images {
+  background-color: white;
+  width: 450px;
+  height: 450px;
+  overflow: hidden;
+  position: relative;
+  float: left;
+}
+
+.phones {
+  list-style: none;
+}
+
+.thumb {
+  float: left;
+  margin: -0.5em 1em 1.5em 0;
+  padding-bottom: 1em;
+  height: 100px;
+  width: 100px;
+}
+
+.phones li {
+  clear: both;
+  height: 24px;
+
+}
+
+/** Detail View **/
+img.phone {
+  float: left;
+  margin-right: 3em;
+  margin-bottom: 2em;
+  background-color: white;
+  padding: 2em;
+  height: 400px;
+  width: 400px;
+  display: none;
+}
+
+img.phone:first-child {
+  display: block;
+}
+
+
+ul.phone-thumbs {
+  margin: 0;
+  list-style: none;
+}
+
+ul.phone-thumbs li {
+  border: 1px solid black;
+  display: inline-block;
+  margin: 1em;
+  background-color: white;
+}
+
+ul.phone-thumbs img {
+  height: 100px;
+  width: 100px;
+  padding: 1em;
+}
+
+ul.phone-thumbs img:hover {
+  cursor: pointer;
+}
+
+
+ul.specs {
+  clear: both;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul.specs > li{
+  display: inline-block;
+  width: 200px;
+  vertical-align: top;
+}
+
+ul.specs > li > span{
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+ul.specs dt {
+  font-weight: bold;
+}
+
+
+.responsive-container {
+    position: relative;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.dummy {
+    padding-top: 50%; /* forces 1:1 aspect ratio */
+}
+
+.img-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    text-align:center; /* Align center inline elements */
+    font: 0/0 a;
+}
+
+.img-container:before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.img-container img {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+

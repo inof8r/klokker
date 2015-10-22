@@ -1,0 +1,39 @@
+<div class="container-fluid">
+	<div class="row">
+    	<div class="col-md-12 mainheader" style="text-align:center;">
+			<h2>NFC Tag management</h2>
+		</div>
+	</div>
+    <div class="col-md-12"><br></div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <!--Sidebar content-->
+    <div class="col-md-12">      
+    <a href="#/home" class="btn btn-lg btn-primary btn-block">Home</a>
+    </div>
+    <div class="col-md-12"><br></div>
+    <div class="col-md-12">      
+      Search: <input ng-model="query">
+    </div>
+    </div>
+    <div class="col-md-10">
+      <!--Body content-->
+
+      <ul class="phones">
+        <li ng-repeat="tag in tags | filter:query | orderBy:orderProp" class=" phone-listing">
+		
+		 <div class="col-md-8"><a href="#/tags/{{tag.id}}">{{tag.tagid}}</a></div>          
+		 <div class="col-md-2">{{tag.obtype}}</div>          
+		 <div class="col-md-2">{{tag.owner}}</div>          
+		
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+</div>
+
