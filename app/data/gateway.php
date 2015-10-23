@@ -8,11 +8,8 @@ if ($_POST["mode"] != "") {
 	$mode = $_POST["mode"];
 }
 
-
-
-
-	$AdmincrudEngine->changeDatabase($main_db_name);
-	$AuthManagerService = new AuthManager($AdmincrudEngine, "busibox_accounts", "username", "passwd");
+$AdmincrudEngine->changeDatabase($main_db_name);
+$AuthManagerService = new AuthManager($AdmincrudEngine, "busibox_accounts", "username", "passwd");
 	
 
 if ($mode == "login") {
@@ -58,10 +55,7 @@ if ($mode == "home") {
 	$returnvals[0]["userid"] = $_SESSION["BSBX_UID"];
 	$returnvals[0]["username"] = $_SESSION["BSBX_UNAME"];
 	$returnvals[0]["session"] = $_SESSION["BSBX_SES"];
-if ($_SESSION["BSBX_SES"] != "") {
-		$returnvals[0]["authorized"] = "1";
-}
-
+	$returnvals[0]["authorized"] = $UserisAuthorized;
 
 	$data = json_encode($returnvals);
 	print $data;
@@ -73,7 +67,8 @@ if ($tagId != "") {
 	$MaincrudEngine->changeDatabase($db_name);			
 	$returnvals = $MaincrudEngine->read("bb_smartags", "WHERE id='" . $tagId . "' OR tagid='" . $tagId . "'", "*");    
 
-	// Register timeclock action	
+	// Register timeclock action
+	$returnvals[0]["authorized"] = $UserisAuthorized;		
 	$returnvals[0]["req_tagid"] = "$tagId";
 	if ($returnvals[0]["id"] != "") {
 
@@ -120,7 +115,7 @@ if ($tagId != "") {
 	$returnvals[0]["username"] = $_SESSION["BSBX_UNAME"];
 		$returnvals[0]["session"] = $_SESSION["BSBX_SES"];
 				if ($_SESSION["BSBX_SES"] != "") {
-				$returnvals[0]["authorized"] = "1";
+
 	}
 
 

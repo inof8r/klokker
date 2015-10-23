@@ -159,43 +159,33 @@ timeclockControllers.controller('LogoutController', ['$scope', '$http', function
 		
 	}]);	
 	
-timeclockControllers.controller('AppCtrl', function($scope) {
-        $scope.cards = [{
-            text: 'Bla bla bla bla bla bla bla ',
-            title: 'Bla'
-        }, {
-            text: 'Bla bla bla bla bla bla bla ',
-            title: 'Bla'
-        }, {
-            text: 'Bla bla bla bla bla bla bla ',
-            title: 'Bla'
-        }, {
-            text: 'Bla bla bla bla bla bla bla ',
-            title: 'Bla'
-        }, {
-            text: 'Bla bla bla bla bla bla bla ',
-            title: 'Bla'
-        }, {
-            text: 'Bla bla bla bla bla bla bla ',
-            title: 'Bla'
-        }, {
-            text: 'Bla bla bla bla bla bla bla ',
-            title: 'Bla'
-        }, {
-            text: 'Bla bla bla bla bla bla bla ',
-            title: 'Bla'
-        }, {
-            text: 'Bla bla bla bla bla bla bla ',
-            title: 'Bla'
-        }, {
-            text: 'Bla bla bla bla bla bla bla ',
-            title: 'Bla'
-        }, {
-            text: 'Bla bla bla bla bla bla bla ',
-            title: 'Bla'
-        }];
-        $scope.displayContent = true;
-        $scope.toggleContent = function(showContent) {
-            $scope.displayContent = showContent;
-        };
-    });	
+
+timeclockControllers.controller('SaveTagController', ['$scope', '$http', function($scope, $http) {
+		this.postForm = function() {
+		
+			var encodedString = 'mode=savetag&obid=' +
+				'&tagid=' +
+				encodeURIComponent(this.inputData.tagid);
+				
+			$http({
+				method: 'POST',
+				url: 'data/gateway.php',
+				data: encodedString,
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			})
+			.success(function(data, status, headers, config) {
+				console.log(data);
+//				if ( data.trim() === 'correct') {
+				//alert(data);
+				if ( data.result == 'success') {				
+					window.location.href = '#/home';
+				} else {
+					$scope.errorMsg = "Tag not saved";
+				}
+			})
+			.error(function(data, status, headers, config) {
+				$scope.errorMsg = 'Unable to submit form';
+			})
+		}
+		
+	}]);	

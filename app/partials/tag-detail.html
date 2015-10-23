@@ -1,35 +1,72 @@
+
+
 <div class="container-fluid">
-		<div class="mainheader">    
-		    Tag details
-    	</div>    
+<div ng-if="tag.authorized == '1'">
+	<div class="row">
+    	<div class="col-md-12 mainheader" style="text-align:center;">
+			<h2>Admin mode</h2>
+		</div>
+	</div>
+</div>
 
 <div class="row">
     <div class="col-md-12">
-	<div class="mainbutton" style="width:120px;">
-		<a href="#/tags" class="thumb">Back</a>
-	</div>
+
+		    <h2>Tag details</h2>
+	
 	</div>	
 </div>
 
+
 <div class="row">
-    <div class="col-md-12">
-<p>TAG ID: {{tag.tagid}}</p>
-			
-<ul class="specs">
+    <div class="col-md-2">
 
-  <li>
-    <span>Tag info</span>
-    <dl>
+		<a href="#/tags" class="btn btn-lg btn-primary btn-block">Back</a>
 
-      <dd>{{tag.id}}</dd>
-      <dd>{{tag.tagid}}</dd>
-      <dd>{{tag.obtype}}</dd>
-    </dl>
-  </li>
- 
-</ul>
+	</div>	
 </div>
+
+<div ng-controller="SaveTagController as tagCtrl">
+    <form class="login-form" ng-submit="tagCtrl.postForm()">
+
+
+<div class="row">
+    <div class="col-md-3">ID</div>
+    <div class="col-md-4">{{tag.id}}
+            <input type="text" id="theid" ng-model="tag.id" value="{{tag.id}}" class="form-control"   ng-model="tagCtrl.inputData.theid">
+    </div>
 </div>
+
+<div class="row">
+    <div class="col-md-3">RFID ID</div>
+    <div class="col-md-4">        
+        <input type="text" id="tagid" ng-model="tag.tagid" value="{{tag.tagid}}" class="form-control"  autofocus ng-model="tagCtrl.inputData.tagid">
+	</div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">Obtype</div>
+    <div class="col-md-4">
+        <input type="text" id="obtype" ng-model="tag.obtype" value="{{tag.obtype}}" class="form-control"   ng-model="tagCtrl.inputData.obtype">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+		<a href="#/tags" class="btn btn-lg btn-primary btn-block">Back</a>    
+    </div>
+<div ng-if="tag.authorized == '1'">    
+    <div class="col-md-6">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+    </div>
+ </div>    
+</div>
+
+
+    </form>
+</div>
+    
+
 
 </div>
 

@@ -1,16 +1,7 @@
 <?php
 
 # Includes
-$main_db_host = "127.0.0.1";
-$main_db_user = "dbuser";
-$main_db_pass = "dbpassword";
-$main_db_name = "dbname";
-
-
-$db_host = "127.0.0.1";
-$db_user = "dbuser";
-$db_pass = "dbpassword";
-$db_name = "dbname";
+include($_SERVER["DOCUMENT_ROOT"] . "/bb_config.php");
 
 include("functions.php");
 
