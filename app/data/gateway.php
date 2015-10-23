@@ -121,6 +121,7 @@ if ($tagId != "") {
 
 		}
 	} else {
+		$returnvals[0]["req_tagid"] = "$tagId";
 		$returnvals[0]["tagid"] = "unknown";
 		$returnvals[0]["fullname"] = "Unknown user";	
 		$returnvals[0]["log"] = "Unknow tag. Can not register activity.<br>Please provision card or contact you system administrator.";		
