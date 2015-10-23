@@ -76,7 +76,11 @@ if ($mode == "savetag") {
 		$values = Array("$tagid","$owner","$obtype","$note");		
 		//$MaincrudEngine->enableTracing(1);
 		$MaincrudEngine->changeDatabase($db_name);					
-		$updateTag = $MaincrudEngine->update("bb_smartags", $fields, $values, "WHERE id='$obid'");    	
+		if ($obid == "") {
+			$createTag = $MaincrudEngine->create("bb_smartags", $fields, $values, "");    	
+		} else {
+			$updateTag = $MaincrudEngine->update("bb_smartags", $fields, $values, "WHERE id='$obid'");    	
+		}
 	
 		$returnvals[0]["req_tagid"] = "$tagid";
 		$returnvals[0]["log"] = "Tag $tagid sAved";
