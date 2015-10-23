@@ -27,31 +27,49 @@
 </div>
 
 <div ng-controller="SaveTagController as tagCtrl">
-    <form class="login-form" ng-submit="tagCtrl.postForm()">
+    <form class="form" ng-submit="tagCtrl.postForm()">
 
 
 <div class="row">
     <div class="col-md-3">ID</div>
     <div class="col-md-4">{{tag.id}}
-            <input type="text" id="theid" ng-model="tag.id" value="{{tag.id}}" class="form-control"   ng-model="tagCtrl.inputData.theid">
+            <input type="text" id="obid" ng-model="tag.id" value="{{tag.id}}" class="form-control">
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-3">RFID ID</div>
     <div class="col-md-4">        
-        <input type="text" id="tagid" ng-model="tag.tagid" value="{{tag.tagid}}" class="form-control"  autofocus ng-model="tagCtrl.inputData.tagid">
+        <input type="text" id="tagid" ng-model="tag.tagid" value="{{tag.tagid}}" class="form-control"  autofocus>
 	</div>
 </div>
 
 <div class="row">
+    <div class="col-md-3">Owner</div>
+    <div class="col-md-4">
+        <input type="text" id="owner" ng-model="tag.owner" value="{{tag.owner}}" class="form-control"  >
+    </div>
+</div>
+
+
+<div class="row">
     <div class="col-md-3">Obtype</div>
     <div class="col-md-4">
-        <input type="text" id="obtype" ng-model="tag.obtype" value="{{tag.obtype}}" class="form-control"   ng-model="tagCtrl.inputData.obtype">
+        <input type="text" id="obtype" ng-model="tag.obtype" value="{{tag.obtype}}" class="form-control"  >
     </div>
 </div>
 
 <div class="row">
+    <div class="col-md-3">Note:</div>
+    <div class="col-md-4">
+        <input type="text" id="note" ng-model="tag.note" value="{{tag.note}}" class="form-control"  >
+    </div>
+</div>
+
+
+
+<div class="row">
+    	<div class="col-md-12 " style="text-align:center;"><br></div>
     <div class="col-md-6">
 		<a href="#/tags" class="btn btn-lg btn-primary btn-block">Back</a>    
     </div>
@@ -63,9 +81,16 @@
 </div>
 
 <div ng-if="tag.authorized == '1'">
+
 	<div class="row">
-    	<div class="col-md-12 mainheader" style="text-align:center;">
+    	<div class="col-md-12 " style="text-align:center;"><br></div>
+    	<div class="col-md-12 " style="text-align:center;">
+			<div id="logContainer">
+			
 			<pre>{{tag.log}}</pre>
+
+			</div>
+		<div class="alert alert-danger" role="alert" ng-show="errorMsg">{{errorMsg}}</div>
 		</div>
 	</div>
 </div>

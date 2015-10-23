@@ -23,7 +23,7 @@ if ($mode == "login") {
 }
 
 if ($mode == "logout") {
-$deAuthorize = $AuthManagerService->destroySession($_SESSION["BSBX_SES"]);
+	$deAuthorize = $AuthManagerService->destroySession($_SESSION["BSBX_SES"]);
 
 	$_SESSION["BSBX_UID"] = "";
 	$_SESSION["BSBX_UNAME"] = "";
@@ -39,10 +39,11 @@ $deAuthorize = $AuthManagerService->destroySession($_SESSION["BSBX_SES"]);
 	exit;
 }
 
+$UserisAuthorized = 0;
 $AdmincrudEngine->changeDatabase($main_db_name);
 $isAuthorized = $AuthManagerService->authSession($_SESSION["BSBX_SES"]);
-$UserisAuthorized = 0;
-//print "<br>isAuthorized = $isAuthorized";
+
+
 
 if ($isAuthorized == "1") {
 	$UserisAuthorized = 1;
@@ -60,6 +61,33 @@ if ($mode == "home") {
 	$data = json_encode($returnvals);
 	print $data;
 	exit;
+}
+
+if ($mode == "savetag") {
+	$returnvals[0]["authorized"] = $UserisAuthorized;		
+	if($UserisAuthorized == 1) {
+	
+		$obid = $_POST["obid"];
+		$tagid = $_POST["tagid"];	
+		$owner = $_POST["owner"];			
+		$obtype = $_POST["obtype"];			
+		$note = $_POST["note"];					
+		$fields = Array("tagid","owner","obtype","note");
+		$values = Array("$tagid","$owner","$obtype","$note");		
+		$MaincrudEngine->enableTracing(1);
+		$MaincrudEngine->changeDatabase($db_name);					
+		$updateTag = $MaincrudEngine->update("bb_smartags", $fields, $values, "WHERE id='$obid'");    	
+	
+		$returnvals[0]["req_tagid"] = "$tagid";
+		$returnvals[0]["log"] = "Tag $tagid sAved";
+	
+	} else {
+		$returnvals[0]["log"] = "User not authorized";
+	}
+	$data = json_encode($returnvals);
+	print $data;
+	exit;
+
 }
 
 if ($tagId != "") {
@@ -110,16 +138,17 @@ if ($tagId != "") {
 			
 			
 			$logData .= "<br>Creating timeclock activity for user $tagOwner on $recordDate";			
-			$returnvals[0]["log"] = $logData;	
-	$returnvals[0]["userid"] = $_SESSION["BSBX_UID"];
-	$returnvals[0]["username"] = $_SESSION["BSBX_UNAME"];
-		$returnvals[0]["session"] = $_SESSION["BSBX_SES"];
-				if ($_SESSION["BSBX_SES"] != "") {
-
-	}
-
+		
 
 		}
+			$stringTool = new StringTools();
+			$testDur = $stringTool->formatDuration(922);
+			$logData .= "test = $testDur";
+			$returnvals[0]["log"] = $logData;	
+			$returnvals[0]["userid"] = $_SESSION["BSBX_UID"];
+			$returnvals[0]["username"] = $_SESSION["BSBX_UNAME"];
+			$returnvals[0]["session"] = $_SESSION["BSBX_SES"];
+
 	} else {
 
 		$returnvals[0]["tagid"] = "$tagId";

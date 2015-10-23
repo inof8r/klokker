@@ -60,6 +60,7 @@ timeclockControllers.controller('TagDetailCtrl', ['$scope', '$routeParams', 'Tag
   	$http.get('data/gateway.php' + tagId).
 		success(function(data, status, headers, config) {
 		  $scope.tags = data;	
+		  $scope.inputData = data;
 		}).
 		error(function(data, status, headers, config) {
 		  // log error
@@ -162,11 +163,15 @@ timeclockControllers.controller('LogoutController', ['$scope', '$http', function
 
 timeclockControllers.controller('SaveTagController', ['$scope', '$http', function($scope, $http) {
 		this.postForm = function() {
-		
-			var encodedString = 'mode=savetag&obid=' +
-				'&tagid=' +
-				encodeURIComponent(this.inputData.tagid);
-				
+			var obid = $("#obid").val();
+			var tagid = $("#tagid").val();
+			var owner = $("#owner").val();
+			var note = $("#note").val();
+			var encodedString = 'mode=savetag';
+			encodedString += '&obid=' + encodeURIComponent(obid);
+			encodedString += '&tagid=' +encodeURIComponent(tagid);
+			encodedString += '&owner=' +encodeURIComponent(owner);				
+			encodedString += '&note=' +encodeURIComponent(note);				
 			$http({
 				method: 'POST',
 				url: 'data/gateway.php',
@@ -176,8 +181,10 @@ timeclockControllers.controller('SaveTagController', ['$scope', '$http', functio
 			.success(function(data, status, headers, config) {
 				console.log(data);
 //				if ( data.trim() === 'correct') {
-				//alert(data);
-				if ( data.result == 'success') {				
+
+					$("#logContainer").html("log" + data[0].log);			
+				if ( data.result == 'success') {	
+
 					window.location.href = '#/home';
 				} else {
 					$scope.errorMsg = "Tag not saved";
