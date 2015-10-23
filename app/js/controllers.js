@@ -162,6 +162,17 @@ timeclockControllers.controller('LogoutController', ['$scope', '$http', function
 	
 
 timeclockControllers.controller('SaveTagController', ['$scope', '$http', function($scope, $http) {
+$scope.values = [{
+  id: 1,
+  label: 'aLabel',
+  subItem: { name: 'aSubItem' }
+}, {
+  id: $("#owner").val(),
+  label: 'bLabel',
+  subItem: { name: 'bSubItem' }
+}];
+
+$scope.selected = { id: $("#owner").val() };
 		this.postForm = function() {
 			var obid = $("#obid").val();
 			var tagid = $("#tagid").val();
@@ -181,7 +192,7 @@ timeclockControllers.controller('SaveTagController', ['$scope', '$http', functio
 			.success(function(data, status, headers, config) {
 				console.log(data);
 //				if ( data.trim() === 'correct') {
-
+	
 					$("#logContainer").html("log" + data[0].log);			
 				if ( data.result == 'success') {	
 
