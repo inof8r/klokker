@@ -74,7 +74,7 @@ if ($mode == "savetag") {
 		$note = $_POST["note"];					
 		$fields = Array("tagid","owner","obtype","note");
 		$values = Array("$tagid","$owner","$obtype","$note");		
-		$MaincrudEngine->enableTracing(1);
+		//$MaincrudEngine->enableTracing(1);
 		$MaincrudEngine->changeDatabase($db_name);					
 		$updateTag = $MaincrudEngine->update("bb_smartags", $fields, $values, "WHERE id='$obid'");    	
 	
