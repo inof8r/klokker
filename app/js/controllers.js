@@ -57,15 +57,8 @@ timeclockControllers.controller("TagsListCtrl", function($scope, $http) {
 timeclockControllers.controller('TagDetailCtrl', ['$scope', '$routeParams', 'Tag',
   function($scope, $routeParams, Tag) {
     $scope.tag = Tag.get({tagId: $routeParams.tagId}, function(tag) {
-  	$http.get('data/gateway.php' + tagId).
-		success(function(data, status, headers, config) {
-		  $scope.tags = data;	
-		  $scope.inputData = data;
-		}).
-		error(function(data, status, headers, config) {
-		  // log error
-		});
     });
+    
 }]);
 
 timeclockControllers.controller('TagRegisterCtrl', ['$scope', '$routeParams', 'Tag',
@@ -162,15 +155,7 @@ timeclockControllers.controller('LogoutController', ['$scope', '$http', function
 	
 
 timeclockControllers.controller('SaveTagController', ['$scope', '$http', function($scope, $http) {
-$scope.values = [{
-  id: 1,
-  label: 'aLabel',
-  subItem: { name: 'aSubItem' }
-}, {
-  id: $("#owner").val(),
-  label: 'bLabel',
-  subItem: { name: 'bSubItem' }
-}];
+
 
 $scope.selected = { id: $("#owner").val() };
 		this.postForm = function() {
@@ -193,10 +178,10 @@ $scope.selected = { id: $("#owner").val() };
 				console.log(data);
 //				if ( data.trim() === 'correct') {
 	
-					$("#logContainer").html("log" + data[0].log);			
-				if ( data.result == 'success') {	
 
-					window.location.href = '#/home';
+				if ( data[0].result == 'success') {	
+					$("#logContainer").html(data[0].log);			
+					//window.location.href = '#/home';
 				} else {
 					$scope.errorMsg = "Tag not saved";
 				}
@@ -207,3 +192,21 @@ $scope.selected = { id: $("#owner").val() };
 		}
 		
 	}]);	
+
+
+timeclockControllers.controller('UserListController', function($scope, $http, $log) {
+    function select() {
+        $http.get('inc/gateway.php?action=getusers')
+            .success(function(data) {
+                $scope.values = data.values;
+
+                if(data.types) {
+                    $scope.types = data.types;
+                    $scope.type = $scope.types[0].id;
+                }
+            });
+    }
+
+    select();
+
+});

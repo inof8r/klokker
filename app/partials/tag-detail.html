@@ -26,7 +26,7 @@
 	</div>	
 </div>
 
-<div ng-controller="TagDetailCtrl as tagCtrl">
+<div ng-controller="SaveTagController as tagCtrl">
     <form class="form" ng-submit="tagCtrl.postForm()">
 
 
@@ -48,7 +48,7 @@
     <div class="col-md-3">Owner</div>
     <div class="col-md-4">
         <input type="text" id="owner" ng-model="tag.owner" value="{{tag.owner}}" class="form-control"  >
-        <select ng-options="item.subItem as item.label for item in values track by item.id" ng-model="selected"></select>
+
     </div>
 </div>
 
@@ -86,11 +86,9 @@
 	<div class="row">
     	<div class="col-md-12 " style="text-align:center;"><br></div>
     	<div class="col-md-12 " style="text-align:center;">
-			<div id="logContainer">
-			
-			<pre>{{tag.log}}</pre>
-
-			</div>
+			<pre>
+			<div id="logContainer">{{tag.log}}</div>
+		</pre>			
 		<div class="alert alert-danger" role="alert" ng-show="errorMsg">{{errorMsg}}</div>
 		</div>
 	</div>

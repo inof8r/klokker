@@ -7,28 +7,31 @@
     <div class="col-md-12"><br></div>
 
   <div class="row">
-    <div class="col-md-2">
-      <!--Sidebar content-->
-    <div class="col-md-12">      
-    <a href="#/home" class="btn btn-lg btn-primary btn-block">Home</a>
+    <div class="col-md-12">
+     	<!--Sidebar content-->
+	    <div class="col-md-6">      
+		    <a href="#/home" class="btn btn-lg btn-primary btn-block">Home</a>
+	    </div>	
+	    <div class="col-xs-6 col-md-6  btn-lg">      
+      	
+      	Search: <input ng-model="query">
+	    </div>
     </div>
-    <div class="col-md-12"><br></div>
-    <div class="col-md-12">      
-      Search: <input ng-model="query">
-    </div>
-    </div>
-    <div class="col-md-10">
+    
+    <div class="col-xs-10 col-md-10">
       <!--Body content-->
 
-      <ul class="phones">
-        <li ng-repeat="tag in tags | filter:query | orderBy:orderProp" class=" phone-listing">
-		
-		 <div class="col-md-8"><a href="#/tags/{{tag.id}}">{{tag.tagid}}</a></div>          
-		 <div class="col-md-2">{{tag.obtype}}</div>          
-		 <div class="col-md-2">{{tag.owner}}</div>          
-		
-        </li>
-      </ul>
+
+        <div ng-repeat="tag in tags | filter:query | orderBy:orderProp" class="row  btn-lg">
+
+
+			 <div class="col-xs-4 col-sm-6" style="float:left;"><a href="#/tags/{{tag.id}}">{{tag.tagid}}</a></div>          
+			 <div class="col-xs-4 col-sm-4" style="float:left;">{{tag.obtype}}</div>          
+			 <div class="col-xs-4 col-sm-2" style="float:left;">{{tag.owner}}</div>          
+
+
+        </div>
+
 
     </div>
   </div>

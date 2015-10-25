@@ -76,7 +76,7 @@ if ($mode == "savetag") {
 		$values = Array("$tagid","$owner","$obtype","$note");		
 		//$MaincrudEngine->enableTracing(1);
 		$MaincrudEngine->changeDatabase($db_name);					
-		if ($obid == "") {
+		if ($obid == ""	) {
 			$createTag = $MaincrudEngine->create("bb_smartags", $fields, $values, "");    	
 		} else {
 			$updateTag = $MaincrudEngine->update("bb_smartags", $fields, $values, "WHERE id='$obid'");    	
@@ -84,8 +84,10 @@ if ($mode == "savetag") {
 	
 		$returnvals[0]["req_tagid"] = "$tagid";
 		$returnvals[0]["log"] = "Tag $tagid sAved";
+		$returnvals[0]["result"] = "success";			
 	
 	} else {
+		$returnvals[0]["result"] = "failed";			
 		$returnvals[0]["log"] = "User not authorized";
 	}
 	$data = json_encode($returnvals);
@@ -152,6 +154,15 @@ if ($tagId != "") {
 			$returnvals[0]["userid"] = $_SESSION["BSBX_UID"];
 			$returnvals[0]["username"] = $_SESSION["BSBX_UNAME"];
 			$returnvals[0]["session"] = $_SESSION["BSBX_SES"];
+
+			$userlist = Array();
+			$userlist[0]= Array();
+
+			$userlist[1] = Array();
+			array_push($userlist[0],"1","name 1");
+			array_push($userlist[1],"2","name 2");
+			$returnvals[0]["values"] = $userlist;
+
 
 	} else {
 
