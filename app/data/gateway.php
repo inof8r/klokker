@@ -156,13 +156,14 @@ if ($tagId != "") {
 				$clockAction = "ingeklokt";
 				$returnvals[0]["clockin"] = "ingeklokt";	
 				$returnvals[0]["clockout"] = " ";	
-				
+				$returnvals[0]["cstatus"] = "in";					
 				$isstart = 1;
 			} else {
 				$logData .= "<br>Clocking out...";
 				$clockAction = "uitgeklokt";
 				$returnvals[0]["clockin"] = " ";	
 				$returnvals[0]["clockout"] = "uitgeklokt";	
+				$returnvals[0]["cstatus"] = "out";									
 				$totaltime = strtotime($recordDate) - strtotime($prevRecord[0]["registered_time"]);
 			}
 			$returnvals[0]["totaltime"] = $totaltime;				
@@ -185,6 +186,7 @@ if ($tagId != "") {
 	} else {
 
 		$returnvals[0]["tagid"] = "$tagId";
+		$returnvals[0]["cstatus"] = "none";
 		$returnvals[0]["fullname"] = "Unknown user";	
 		$returnvals[0]["log"] = "Unknow tag. Can not register activity.<br>Please provision card or contact you system administrator.";		
 	}
