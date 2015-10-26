@@ -66,7 +66,18 @@ if ($mode == "home") {
 if ($mode == "getusers") {
 	$MaincrudEngine->changeDatabase($db_name);					
 	$getUsers = $MaincrudEngine->read("users", "","*");
-	$data = json_encode($getUsers);	
+	$getUsersDB = $MaincrudEngine->read("users", "","*");
+	// decorate
+	foreach($getUsersDB as $i) {	
+		$finalItem = Array();
+		$finalItem["id"] = $i["id"];
+		$finalItem["fullname"] = urldecode($i["fullname"]);		
+		$returnvalsData[] = $finalItem;
+		
+	}
+	
+	$data = json_encode($returnvalsData);	
+	
 	print $data;
 	exit;
 }
@@ -164,9 +175,6 @@ if ($tagId != "") {
 		
 
 		}
-			$stringTool = new StringTools();
-			$testDur = $stringTool->formatDuration(922);
-			$logData .= "test = $testDur";
 			$returnvals[0]["log"] = $logData;	
 			$returnvals[0]["userid"] = $_SESSION["BSBX_UID"];
 			$returnvals[0]["username"] = $_SESSION["BSBX_UNAME"];

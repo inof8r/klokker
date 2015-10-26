@@ -3,42 +3,41 @@
 <div ng-if="authorized == '1'">
 
 	<div class="row">
-    	<div class="col-xs-12 col-md-12">
-    		<div class="mainheader" style="text-align:center;">
+	    <div class="col-xs-12 col-md-12">	
+	    	<div class="mainheader" style="text-align:center;">
 				<h1>Tag management</h1>
+			</div>
+		</div>		
+	</div>
+
+
+	<div class="row">
+		<div class="col-xs-12 col-md-12">
+			<!--Sidebar content-->
+			<div class="col-xs-3 col-md-3">      
+				<a href="#/home" class="btn btn-lg btn-primary btn-block">Home</a>
+			</div>	
+
+			<div class="col-xs-6 col-md-6  btn-lg" style="text-align:right;">      
+			Search: <input ng-model="query">
 			</div>
 		</div>
 	</div>
 
-	<div class="row"><div class="col-xs-12 col-md-12">&nbsp;</div></div>
+	<div class="row"><div class="col-xs-12 col-md-12">&nbsp;ssss</div></div>  
 
-<div class="row">
-	<div class="col-md-12">
-		<!--Sidebar content-->
-		<div class="col-xs-3 col-md-3">      
-			<a href="#/home" class="btn btn-lg btn-primary btn-block">Home</a>
-		</div>	
-		<div class="col-xs-3 col-md-3">      
-
-		</div>	
-
-		<div class="col-xs-6 col-md-6  btn-lg" style="text-align:right;">      
-		Search: <input ng-model="query">
+	<div class="row">  	
+	<div class="col-xs-12 col-md-12">  
+		<div ng-repeat="tag in tags | filter:query | orderBy:orderProp" class="row listRow">
+			<div class="col-xs-2 col-md-2 listRow" style="float:left;">{{tag.obtypename}}</div>          
+			<div class="col-xs-4 col-md-4 listRow" style="float:left;">{{tag.ownername}}</div>          
+			<div class="col-xs-4 col-md-4 listRow" style="float:left;">{{tag.tagid}}</div>          
+			<div class="col-xs-2 col-md-2 listRow" style="float:left;"><a href="#/tags/{{tag.id}}" class="btn btn-lg btn-primary btn-block">Edit</a></div>          		
 		</div>
-	</div>
-</div>
+	</div>	
+	</div>			
 
-	<div class="row"><div class="col-xs-12 col-md-12">&nbsp;</div></div>  
-  
-<div class="row">  
-	<div class="col-xs-12 col-md-12">
-	<div ng-repeat="tag in tags | filter:query | orderBy:orderProp" class="row listRow">
-		<div class="col-xs-2 col-md-2 listRow" style="float:left;">{{tag.obtypename}}</div>          
-		<div class="col-xs-4 col-md-4 listRow" style="float:left;">{{tag.ownername}}</div>          
-		<div class="col-xs-4 col-md-4 listRow" style="float:left;">{{tag.tagid}}</div>          
-		<div class="col-xs-2 col-md-2 listRow" style="float:left;"><a href="#/tags/{{tag.id}}" class="btn btn-lg btn-primary btn-block">Edit</a></div>          		
-	</div>
-</div>
+
 </div>
 	
 
