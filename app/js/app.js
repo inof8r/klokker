@@ -82,3 +82,7 @@ function playSound(str) {
 function sendToast(msg) {
     Android.receiveMessage("sendToast:" + msg);
  }  
+ 
+ $(document).ready(function(){
+    $("body").addClass("loaded");
+});

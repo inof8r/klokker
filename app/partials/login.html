@@ -1,16 +1,29 @@
 <div ng-controller="PostController as postCtrl">
-<div class="col-md-6 col-md-offset-3">
-    <form class="login-form" ng-submit="postCtrl.postForm()">
-        <h2>Please sign in</h2>
-        <label for="inputUsername" class="sr-only">Username</label>
-        <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus ng-model="postCtrl.inputData.username">
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required ng-model="postCtrl.inputData.password">
-		<br>
-		<div class="alert alert-danger" role="alert" ng-show="errorMsg">{{errorMsg}}</div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-		<h2>Or return to listen mode</h2>
-		<a href="#/home" class="btn btn-lg btn-primary btn-block">Listen</a>
-      </form>
+
+
+	<div class="row">
+    	<div class="col-md-12">
+    		<div class="mainheader" style="text-align:center;">
+				<h1>Login</h1>
+			</div>
+		</div>
+	</div>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<form class="login-form" ng-submit="postCtrl.postForm()">
+			<h2>Please sign in</h2>
+			<label for="inputUsername" class="sr-only">Username</label>
+			<input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus ng-model="postCtrl.inputData.username">
+			<label for="inputPassword" class="sr-only">Password</label>
+			<input type="password" id="inputPassword" class="form-control" placeholder="Password" required ng-model="postCtrl.inputData.password">
+			<br>
+			<div class="alert alert-danger" role="alert" ng-show="errorMsg">{{errorMsg}}</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+			<h2>Or return to listen mode</h2>
+			<a href="#/home" class="btn btn-lg btn-primary btn-block">Listen</a>
+		  </form>
+	</div>
 </div>
+
 </div>

@@ -7,7 +7,11 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  color:#ffffff;
+  background-color:#000000;
 }
+
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -17,17 +21,27 @@ body {
 
 }
 .mainheader {
-  margin-top: -10px;
-	font-size: 1.4em;  
-	height: 60px; 
-	background-color:#ff0000;
+	background-color:#0000aa;
 	color:#ffffff;
-	line-height: 60px; 
+	height:50px;
+	line-height:30px;
+}
+
+.listRow {
+	background-color:#cccccc;
+	color:#000000;
+	height:auto;
+	line-height:auto;
 
 }
 
+.listItem {
+	background-color:#cccccc;
+	height:auto;	
+}
+
 h1 {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .mainmenu {
@@ -149,7 +163,7 @@ ul.specs dt {
 .responsive-container {
     position: relative;
     width: 100%;
-    border: 1px solid black;
+ 
 }
 
 .dummy {
@@ -180,3 +194,9 @@ ul.specs dt {
 }
 
 
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-top: -20px;
+    margin-bottom: -20px;    
+}

@@ -59,7 +59,8 @@ class AuthManager {
 //		$this->crudEngine->enableTracing(1);
 		$sesResult = $this->crudEngine->read($this->userTable, "WHERE " . $this->sessionField ."='" . $sessionID . "'", "*");
 		
-		if ($sesResult[0][$this->sessionField] == $sessionID) {
+		
+		if ($sessionID != "" && $sesResult[0][$this->sessionField] == $sessionID) {
 			
 			return "1";			
 		} else {

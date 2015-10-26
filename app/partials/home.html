@@ -1,10 +1,13 @@
+<div class="container-fluid">
 <div ng-repeat="tag in tags | filter:query | orderBy:orderProp">    
 
-	<div class="container-fluid">
+
 <div ng-if="tag.authorized == '1'">
 	<div class="row">
-    	<div class="col-md-12 mainheader" style="text-align:center;">
-			<h2>Admin mode</h2>
+    	<div class="col-md-12">
+    		<div class="mainheader" style="text-align:center;">
+				<h1>Admin mode</h1>
+			</div>
 		</div>
 	</div>
 </div>
@@ -39,12 +42,12 @@
 		</div>
 
 	</div>
-
+<div ng-repeat="tag in tags | filter:query | orderBy:orderProp">    
 	<div class="footer">
 	  <div class="container">
 		<div class="row">
 			
-			<div ng-if="tag.authorized == '1'">
+		<div ng-if="tag.authorized == '1'">
 				<div class="col-md-12">
 					<a href="#/tags" class="btn btn-lg btn-primary btn-block">Tags</a>    		
 				</div>
@@ -54,7 +57,7 @@
 				</div>
 				<div class="col-md-12"><br></div>
 				<div class="col-md-12">
-					<a href="https://www.busibox.nl/klokker/WebShell.apk" class="btn btn-lg btn-primary btn-block">Download latest version</a>    		
+					<a href="https://www.busibox.nl/klokker/WebShell.apk" class="btn btn-lg btn-primary btn-block">Download latest version	</a>    		
 				</div>
 				<div class="col-md-12"><br></div>
 
@@ -76,9 +79,6 @@
 		
 		</div>		
 	  </div>
-	  <div class="container">
-		  <br>
-	  </div>
-</div>
-
+	</div>
+	</div>
 </div>		

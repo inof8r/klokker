@@ -1,15 +1,35 @@
+<div class="container-fluid">
+
 <div ng-app="postExample" ng-controller="LogoutController as postCtrl">
-	<div class="col-md-12">
-    	<h2>Sign out?</h2>
+
+	<div class="row">
+    	<div class="mainheader" style="text-align:center;">
+			<h1>About</h1>
+		</div>
 	</div>
+
+	<div class="row"><div class="col-md-12">&nbsp;</div></div>
+
+	<div class="row">
+		<div class="col-md-12">
+    		<h2>Sign out?</h2>
+		</div>
+	</div>	
 	
-	<div class="col-md-6">
-    	<a href="#/home" class="btn btn-lg btn-primary btn-block">Cancel</a>
-	</div>
-	<div class="col-md-6">
-    	<form class="login-form" ng-submit="postCtrl.postForm()">
-			<div class="alert alert-danger" role="alert" ng-show="errorMsg">{{errorMsg}}</div>
-	        <button class="btn btn-lg btn-primary btn-block" type="submit">Logout</button>
-		</form>
-	</div>
+	<div class="row"><div class="col-md-12">&nbsp;</div></div>
+		
+	<div class="row">
+		<div class="col-md-6">
+    		<a href="#/home" class="btn btn-lg btn-primary btn-block">Cancel</a>
+		</div>
+		<div class="col-md-6">
+    		<form class="login-form" ng-submit="postCtrl.postForm()">
+				<div class="alert alert-danger" role="alert" ng-show="errorMsg">{{errorMsg}}</div>
+	        	<button class="btn btn-lg btn-primary btn-block" type="submit">Logout</button>
+			</form>
+		</div>
+	</div>	
+
+</div>
+
 </div>

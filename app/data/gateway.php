@@ -192,7 +192,7 @@ if ($tagId != "") {
 		$finalItem["tagid"] = $i["tagid"];		
 		$finalItem["owner"] = $i["owner"];		
 		$ownerParams = $MaincrudEngine->read("users", "WHERE id='" . $i["owner"] . "'", "*");    		
-		$finalItem["ownername"] = $ownerParams[0]["fullname"];						
+		$finalItem["ownername"] = urldecode($ownerParams[0]["fullname"]);
 		$obtypeParams = $MaincrudEngine->read("bb_smartag_types", "WHERE id='" . $i["owner"] . "'", "*");    		
 		$finalItem["obtype"] = $i["obtype"];				
 		$finalItem["obtypename"] = $obtypeParams[0]["name"];				
