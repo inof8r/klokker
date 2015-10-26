@@ -47,7 +47,8 @@ timeclockControllers.controller("HomeCtrl", function($scope, $http) {
 timeclockControllers.controller("TagsListCtrl", function($scope, $http) {
   $http.get('data/gateway.php').
     success(function(data, status, headers, config) {
-      $scope.tags = data;
+      $scope.tags = data.data;
+		$scope.authorized = data.authorized;
     }).
     error(function(data, status, headers, config) {
       // log error

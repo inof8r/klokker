@@ -197,9 +197,10 @@ if ($tagId != "") {
 		$finalItem["obtype"] = $i["obtype"];				
 		$finalItem["obtypename"] = $obtypeParams[0]["name"];				
 		$finalItem["note"] = $i["note"];						
-		$returnvals[] = $finalItem;
+		$returnvalsData[] = $finalItem;
 	}
-	$returnvals[0]["authorized"] = $UserisAuthorized;	
+	$returnvals["authorized"] = $UserisAuthorized;	
+	$returnvals["data"] = $returnvalsData;
 	$data = json_encode($returnvals);	
 }
 

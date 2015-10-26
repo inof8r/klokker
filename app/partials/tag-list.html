@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-<div ng-if="tag.authorized == '1'">
+<div ng-if="authorized == '1'">
 
 	<div class="row">
     	<div class="col-md-12 mainheader" style="text-align:center;">
@@ -41,8 +41,8 @@
 
 </div>
   
-  
-<div ng-if="tag.authorized != '1'">
+
+<div ng-if="authorized != '1'">
 	<div class="row">
     	<div class="col-md-12 mainheader" style="text-align:center;">
 			<h2>Access denied</h2>
@@ -55,6 +55,7 @@
 	    </div>	
 	</div>		
 </div>
+
 
 	
 
