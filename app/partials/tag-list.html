@@ -1,4 +1,7 @@
 <div class="container-fluid">
+
+<div ng-if="tag.authorized == '1'">
+
 	<div class="row">
     	<div class="col-md-12 mainheader" style="text-align:center;">
 			<h2>NFC Tag management</h2>
@@ -9,10 +12,10 @@
   <div class="row">
     <div class="col-md-12">
      	<!--Sidebar content-->
-	    <div class="col-md-6">      
+	    <div class="col-md-2">      
 		    <a href="#/home" class="btn btn-lg btn-primary btn-block">Home</a>
 	    </div>	
-	    <div class="col-xs-6 col-md-6  btn-lg">      
+	    <div class="col-xs-8 col-md-6  btn-lg">      
       	
       	Search: <input ng-model="query">
 	    </div>
@@ -24,10 +27,10 @@
 
         <div ng-repeat="tag in tags | filter:query | orderBy:orderProp" class="row  btn-lg">
 
-
+			 <div class="col-xs-4 col-sm-2" style="float:left;">{{tag.obtypename}}</div>          
+			 <div class="col-xs-4 col-sm-4" style="float:left;">{{tag.ownername}}</div>          
 			 <div class="col-xs-4 col-sm-6" style="float:left;"><a href="#/tags/{{tag.id}}">{{tag.tagid}}</a></div>          
-			 <div class="col-xs-4 col-sm-4" style="float:left;">{{tag.obtype}}</div>          
-			 <div class="col-xs-4 col-sm-2" style="float:left;">{{tag.owner}}</div>          
+
 
 
         </div>
@@ -36,6 +39,24 @@
     </div>
   </div>
 
+</div>
+  
+  
+<div ng-if="tag.authorized != '1'">
+	<div class="row">
+    	<div class="col-md-12 mainheader" style="text-align:center;">
+			<h2>Access denied</h2>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+	    <div class="col-md-2">      
+		    <a href="#/home" class="btn btn-lg btn-primary btn-block">Home</a>
+	    </div>	
+	</div>		
+</div>
+
+	
 
   
 </div>

@@ -7,7 +7,7 @@
 			<h2>Admin mode</h2>
 		</div>
 	</div>
-</div>
+
 
 <div class="row">
     <div class="col-md-12">
@@ -51,7 +51,6 @@
 
 <div ng-controller="UserListController as userCtrl">
 	<select id="owner" name="owner" ng-model="tag.owner"  ng-options="user.id as user.fullname for user in data.users" class="form-control">
-         <option value="{{user.id}}">{{user.fullname}}</option>
      </select>  
 </div>
 
@@ -111,6 +110,22 @@
     </form>
 </div>
     
+    
+</div>    
+
+<div ng-if="tag.authorized != '1'">
+	<div class="row">
+    	<div class="col-md-12 mainheader" style="text-align:center;">
+			<h2>Access denied</h2>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+	    <div class="col-md-2">      
+		    <a href="#/home" class="btn btn-lg btn-primary btn-block">Home</a>
+	    </div>	
+	</div>		
+</div>
 
 
 </div>

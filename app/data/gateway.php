@@ -172,13 +172,6 @@ if ($tagId != "") {
 			$returnvals[0]["username"] = $_SESSION["BSBX_UNAME"];
 			$returnvals[0]["session"] = $_SESSION["BSBX_SES"];
 
-			$userlist = Array();
-			$userlist[0]= Array();
-
-			$userlist[1] = Array();
-			array_push($userlist[0],"1","name 1");
-			array_push($userlist[1],"2","name 2");
-			$returnvals[0]["values"] = $userlist;
 
 
 	} else {
@@ -187,10 +180,26 @@ if ($tagId != "") {
 		$returnvals[0]["fullname"] = "Unknown user";	
 		$returnvals[0]["log"] = "Unknow tag. Can not register activity.<br>Please provision card or contact you system administrator.";		
 	}
+	$returnvals[0]["authorized"] = $UserisAuthorized;	
 	$data = json_encode($returnvals[0]);
 } else {
 	$MaincrudEngine->changeDatabase($db_name);			
-	$returnvals = $MaincrudEngine->read("bb_smartags", "", "*");    
+	$returnvalsDB = $MaincrudEngine->read("bb_smartags", "", "*");    
+	// decorate
+	foreach($returnvalsDB as $i) {
+		$finalItem = Array();
+		$finalItem["id"] = $i["id"];
+		$finalItem["tagid"] = $i["tagid"];		
+		$finalItem["owner"] = $i["owner"];		
+		$ownerParams = $MaincrudEngine->read("users", "WHERE id='" . $i["owner"] . "'", "*");    		
+		$finalItem["ownername"] = $ownerParams[0]["fullname"];						
+		$obtypeParams = $MaincrudEngine->read("bb_smartag_types", "WHERE id='" . $i["owner"] . "'", "*");    		
+		$finalItem["obtype"] = $i["obtype"];				
+		$finalItem["obtypename"] = $obtypeParams[0]["name"];				
+		$finalItem["note"] = $i["note"];						
+		$returnvals[] = $finalItem;
+	}
+	$returnvals[0]["authorized"] = $UserisAuthorized;	
 	$data = json_encode($returnvals);	
 }
 
