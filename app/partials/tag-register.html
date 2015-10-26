@@ -1,63 +1,65 @@
 <div class="container-fluid">
 
 <div ng-if="tag.authorized == '1'">
-	<div class="row">
-    	<div class="col-md-12 mainheader" style="text-align:center;">
-			<h2>Admin mode</h2>
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<div class="mainheader" style="text-align:center;">
+					<h1>Admin mode</h1>
+				</div>
+			</div>
 		</div>
-	</div>
 </div>
 
 <div class="row">
-    <div class="col-md-12" style="text-align:center;">
+    <div class="col-xs-12 col-md-12" style="text-align:center;">
 		<h1>{{tag.fullname}}</h1>
-		<h1>{{tag.req_tagid}}</h1>
 	</div>
 </div>
 
 <div ng-if="tag.totaltime > 0">
-    <div class="col-md-12" style="text-align:center;">
+    <div class="col-xs-12 col-md-12" style="text-align:center;">
 		<b>Tijd verstreken: {{tag.totaltime}} seconden</b>
 	</div>
 </div>
 
 <div ng-if="tag.totaltime == 0">
-    <div class="col-md-12" style="text-align:center;">
+    <div class="col-xs-12 col-md-12" style="text-align:center;">
 		<b>Tijd wordt geregistreerd</b>
 	</div>
 </div>
 
 
-<div ng-if="tag.authorized == '1'">
-	<div class="row">
-    	<div class="col-md-12" style="text-align:center;">
-				<a href="#/tags/{{tag.req_tagid}}" class="btn btn-lg btn-primary btn-block">Edit</a>    		
-		</div>
-	</div>
-</div>
 
 
-
-<div class="row">
-    <div class="col-md-2" style="text-align:center;">
-	</div>
-    <div class="col-md-8" style="text-align:center;">
-		    <div style="padding-top:25%;"></div>
     	<div ng-if="tag.clockin == 'ingeklokt'">
+	<div class="row">
+    
+    <div class="col-xs-12 col-md-12" style="text-align:center;">
+
+
 			<img src="img/alarm-clock-red.png" style="height:300px;">
 		</div>
 	</div>
-    <div class="col-md-2" style="text-align:center;">
-	</div>
+    
+</div>
 
+
+    	<div ng-if="tag.clockout == 'uitgeklokt'">
+<div class="row">
+    <div class="col-xs-12 col-md-12" style="text-align:center;">
+
+			<img src="img/alarm-clock-green.png" style="height:300px;">
+		</div>
+	</div>
 </div>
 
 
 
-<div class="row">
-    <div class="col-md-12" style="text-align:center;">
-    	<div ng-if="tag.clockout == 'uitgeklokt'">
-			<img src="img/alarm-clock-green.png" style="height:300px;">
+<div ng-if="tag.authorized == '1'">
+	<div class="row">
+	<div class="row">
+    	<div class="col-xs-12 col-md-12" style="text-align:center;">
+				<a href="#/tags/{{tag.req_tagid}}" class="btn btn-lg btn-primary btn-block">Edit</a>    		
 		</div>
 	</div>
 </div>
