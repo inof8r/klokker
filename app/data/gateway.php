@@ -128,7 +128,7 @@ if ($tagId != "") {
 			$returnvals[0]["status"] = "is reg";
 			$logData = "Record for tag $tagId exists.";
 			$tagOwner = $returnvals[0]["owner"];
-			$ownerRecords = $MaincrudEngine->read("users", "WHERE busibox_id='" . $tagOwner . "'", "*");   
+			$ownerRecords = $MaincrudEngine->read("users", "WHERE id='" . $tagOwner . "'", "*");   
 			$tagUsername = urldecode($ownerRecords[0]["fullname"]);
 			
 			$prevRecord = $MaincrudEngine->read("timeclock_activities", "WHERE userid='" . $tagOwner . "' ORDER BY registered_time DESC", "*");   
@@ -199,7 +199,7 @@ if ($tagId != "") {
 		$finalItem["note"] = $i["note"];						
 		$returnvalsData[] = $finalItem;
 	}
-	$returnvals["authorized"] = $UserisAuthorized;	
+	$returnvals	["authorized"] = $UserisAuthorized;	
 	$returnvals["data"] = $returnvalsData;
 	$data = json_encode($returnvals);	
 }
