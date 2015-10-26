@@ -184,7 +184,7 @@ timeclockControllers.controller('SaveTagController', ['$scope', '$http', functio
 
 				if ( data[0].result == 'success') {	
 					$("#logContainer").html(data[0].log);			
-					//window.location.href = '#/home';
+					//window.location.href = '#/tags';
 				} else {
 					$scope.errorMsg = "Tag not saved";
 				}
