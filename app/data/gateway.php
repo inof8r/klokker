@@ -116,7 +116,7 @@ if ($mode == "savetag") {
 if ($tagId != "") {
 // /			$MaincrudEngine->enableTracing(1);			
 	$MaincrudEngine->changeDatabase($db_name);			
-	$returnvals = $MaincrudEngine->read("bb_smartags", "WHERE id='" . $tagId . "' OR tagid='" . $tagId . "'", "*");    
+	$returnvals = $MaincrudEngine->read("bb_smartags", "WHERE id='" . $tagId . "' OR tagid='" . $tagId . "' AND obtype='5'", "*");    
 
 	// Register timeclock action
 	$returnvals[0]["authorized"] = $UserisAuthorized;		
