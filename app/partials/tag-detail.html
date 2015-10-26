@@ -50,8 +50,8 @@
     <div class="col-md-4">
 
 <div ng-controller="UserListController as userCtrl">
-	<select id="owner" name="owner" ng-model="tag.owner"  ng-options="user.busibox_id as user.fullname for user in data.users" class="form-control">
-         <option value="{{user.busibox_id}}">{{user.fullname}}</option>
+	<select id="owner" name="owner" ng-model="tag.owner"  ng-options="user.id as user.fullname for user in data.users" class="form-control">
+         <option value="{{user.id}}">{{user.fullname}}</option>
      </select>  
 </div>
 
