@@ -157,15 +157,17 @@ timeclockControllers.controller('LogoutController', ['$scope', '$http', function
 timeclockControllers.controller('SaveTagController', ['$scope', '$http', function($scope, $http) {
 
 
-$scope.selected = { id: $("#owner").val() };
+
 		this.postForm = function() {
 			var obid = $("#obid").val();
 			var tagid = $("#tagid").val();
-			var owner = $("#owner").val();
+			var owner = $("#owner").val().split(":")[1];
+			var obtype = $("#obtype").val().split(":")[1];
 			var note = $("#note").val();
 			var encodedString = 'mode=savetag';
 			encodedString += '&obid=' + encodeURIComponent(obid);
 			encodedString += '&tagid=' +encodeURIComponent(tagid);
+			encodedString += '&obtype=' +encodeURIComponent(obtype);			
 			encodedString += '&owner=' +encodeURIComponent(owner);				
 			encodedString += '&note=' +encodeURIComponent(note);				
 			$http({
@@ -194,19 +196,15 @@ $scope.selected = { id: $("#owner").val() };
 	}]);	
 
 
-timeclockControllers.controller('UserListController', function($scope, $http, $log) {
-    function select() {
-        $http.get('inc/gateway.php?action=getusers')
-            .success(function(data) {
-                $scope.values = data.values;
-
-                if(data.types) {
-                    $scope.types = data.types;
-                    $scope.type = $scope.types[0].id;
-                }
-            });
-    }
-
-    select();
-
+timeclockControllers.controller('UserListController', function($scope, $http, userService) {
+	$scope.selectedUserId = null;
+    $scope.data = userService.getUsers();
 });
+
+
+timeclockControllers.controller('TagTypeListController', function($scope, $http, tagTypeService) {
+	$scope.selectedTagTypeId = null;
+    $scope.data = tagTypeService.getTagTypes();
+});
+
+

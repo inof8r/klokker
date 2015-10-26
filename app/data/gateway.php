@@ -63,7 +63,25 @@ if ($mode == "home") {
 	exit;
 }
 
+if ($mode == "getusers") {
+	$MaincrudEngine->changeDatabase($db_name);					
+	$getUsers = $MaincrudEngine->read("users", "","*");
+	$data = json_encode($getUsers);	
+	print $data;
+	exit;
+}
+
+if ($mode == "gettagtypes") {
+	$MaincrudEngine->changeDatabase($db_name);					
+	$getTagTypes = $MaincrudEngine->read("bb_smartag_types", "","*");
+	$data = json_encode($getTagTypes);	
+	print $data;
+	exit;
+}
+
+
 if ($mode == "savetag") {
+//	$MaincrudEngine->enableTracing(1);
 	$returnvals[0]["authorized"] = $UserisAuthorized;		
 	if($UserisAuthorized == 1) {
 	
@@ -74,7 +92,6 @@ if ($mode == "savetag") {
 		$note = $_POST["note"];					
 		$fields = Array("tagid","owner","obtype","note");
 		$values = Array("$tagid","$owner","$obtype","$note");		
-		//$MaincrudEngine->enableTracing(1);
 		$MaincrudEngine->changeDatabase($db_name);					
 		if ($obid == ""	) {
 			$createTag = $MaincrudEngine->create("bb_smartags", $fields, $values, "");    	
@@ -83,7 +100,7 @@ if ($mode == "savetag") {
 		}
 	
 		$returnvals[0]["req_tagid"] = "$tagid";
-		$returnvals[0]["log"] = "Tag $tagid sAved";
+		$returnvals[0]["log"] = "Tag $tagid saved";
 		$returnvals[0]["result"] = "success";			
 	
 	} else {

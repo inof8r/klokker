@@ -18,6 +18,7 @@
 </div>
 
 
+
 <div class="row">
     <div class="col-md-2">
 
@@ -33,7 +34,7 @@
 <div class="row">
     <div class="col-md-3">ID</div>
     <div class="col-md-4">{{tag.id}}
-            <input type="text" id="obid" ng-model="tag.id" value="{{tag.id}}" class="form-control">
+            <input type="hidden" id="obid" ng-model="tag.id" value="{{tag.id}}" class="form-control">
     </div>
 </div>
 
@@ -47,7 +48,12 @@
 <div class="row">
     <div class="col-md-3">Owner</div>
     <div class="col-md-4">
-        <input type="text" id="owner" ng-model="tag.owner" value="{{tag.owner}}" class="form-control"  >
+
+<div ng-controller="UserListController as userCtrl">
+	<select id="owner" name="owner" ng-model="tag.owner"  ng-options="user.id as user.fullname for user in data.users" class="form-control">
+         <option value="{{user.id}}">{{user.fullname}}</option>
+     </select>  
+</div>
 
     </div>
 </div>
@@ -56,7 +62,13 @@
 <div class="row">
     <div class="col-md-3">Obtype</div>
     <div class="col-md-4">
-        <input type="text" id="obtype" ng-model="tag.obtype" value="{{tag.obtype}}" class="form-control"  >
+
+<div ng-controller="TagTypeListController as tagTypeCtrl">
+	<select id="obtype" name="obtype" ng-model="tag.obtype"  ng-options="tagtype.id as tagtype.name for tagtype in data.tagtypes" class="form-control">
+         <option value="{{tagtype.id}}">{{tagtype.fullname}}</option>
+     </select>  
+</div>
+        
     </div>
 </div>
 
