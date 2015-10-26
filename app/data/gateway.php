@@ -188,7 +188,7 @@ if ($tagId != "") {
 		$returnvals[0]["tagid"] = "$tagId";
 		$returnvals[0]["cstatus"] = "none";
 		$returnvals[0]["fullname"] = "Unknown user";	
-		$returnvals[0]["log"] = "Unknow tag. Can not register activity.<br>Please provision card or contact you system administrator.";		
+		$returnvals[0]["log"] = "Tag not registered yet";		
 	}
 	$returnvals[0]["authorized"] = $UserisAuthorized;	
 	$data = json_encode($returnvals[0]);
