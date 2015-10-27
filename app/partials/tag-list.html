@@ -3,39 +3,44 @@
 <div ng-if="authorized == '1'">
 
 	<div class="row">
-	    <div class="col-xs-12 col-md-12">	
-	    	<div class="mainheader" style="text-align:center;">
+		<div class="col-xs-12 col-md-12 mainheader">
+			<div class="" style="text-align:center;">
 				<h1>Tag management</h1>
 			</div>
 		</div>		
 	</div>
 
 
-	<div class="row">
-		<div class="col-xs-12 col-md-12">
-			<!--Sidebar content-->
-			<div class="col-xs-3 col-md-3">      
-				<a href="#/home" class="btn btn-lg btn-primary btn-block">Home</a>
+	<div class="row ">
+	<div class="col-xs-12 col-md-12"><hr /></div>
+		<div class="col-xs-12 col-md-12 ">
+			<div class="col-xs-3 col-md-3 ">      
+				<a href="#/home" class="btn btn-primary btn-block">Home</a>
 			</div>	
 
-			<div class="col-xs-6 col-md-6  btn-lg" style="text-align:right;">      
-			Search: <input ng-model="query">
+			<div class="col-xs-6 col-md-6 " style="text-align:right;">      
+			Search: 
+			</div>
+			<div class="col-xs-3 col-md-3 ">      
+			<input ng-model="query" class="form-control ">
 			</div>
 		</div>
+		<div class="col-xs-12 col-md-12"><hr /></div>
 	</div>
 
-	<div class="row"><div class="col-xs-12 col-md-12"><hr /></div></div>  
+
 
 
 	<div class="row">  	
 		<div class="col-xs-12 col-md-12"  style="overflow:auto;height:500px;">  
 
-			<table class="table table-striped">
+			<table class="table table-condensed">
 				<thead>
 					<tr>
-						<th>Edit</th>
-						<th>First Name</th>
-						<th>Last Name</th>
+						<th>Type</th>
+						<th>Owner</th>
+						<th>Tag ID</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -44,7 +49,7 @@
 						<td>{{tag.ownername}}</td>
 						<td>{{tag.tagid}}</td>      
 						<td>
-							<a href="#/tags/{{tag.id}}" class="btn btn-lg btn-primary btn-block">Edit</a>
+							<a href="#/tags/{{tag.id}}" class="btn  btn-primary btn-block">Edit</a>
 						</td>
 
 					</tr>
