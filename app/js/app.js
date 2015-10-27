@@ -60,7 +60,7 @@ timeclockApp.config(['$routeProvider',
         controller: 'ProjectDetailCtrl'
       }).
       otherwise({
-        redirectTo: '/login'
+        redirectTo: '/home'
       });
   }]);
 

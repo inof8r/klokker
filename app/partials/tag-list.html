@@ -24,18 +24,35 @@
 		</div>
 	</div>
 
-	<div class="row"><div class="col-xs-12 col-md-12">&nbsp;ssss</div></div>  
+	<div class="row"><div class="col-xs-12 col-md-12"><hr /></div></div>  
+
 
 	<div class="row">  	
-	<div class="col-xs-12 col-md-12">  
-		<div ng-repeat="tag in tags | filter:query | orderBy:orderProp" class="row listRow">
-			<div class="col-xs-2 col-md-2 listRow" style="float:left;">{{tag.obtypename}}</div>          
-			<div class="col-xs-4 col-md-4 listRow" style="float:left;">{{tag.ownername}}</div>          
-			<div class="col-xs-4 col-md-4 listRow" style="float:left;">{{tag.tagid}}</div>          
-			<div class="col-xs-2 col-md-2 listRow" style="float:left;"><a href="#/tags/{{tag.id}}" class="btn btn-lg btn-primary btn-block">Edit</a></div>          		
+		<div class="col-xs-12 col-md-12"  style="overflow:auto;height:500px;">  
+
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Edit</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="tag in tags | filter:query | orderBy:orderProp">
+						<td>{{tag.obtypename}}</td>
+						<td>{{tag.ownername}}</td>
+						<td>{{tag.tagid}}</td>      
+						<td>
+							<a href="#/tags/{{tag.id}}" class="btn btn-lg btn-primary btn-block">Edit</a>
+						</td>
+
+					</tr>
+				</tbody>
+			</table>
+
 		</div>
-	</div>	
-	</div>			
+	</div>
 
 
 </div>
