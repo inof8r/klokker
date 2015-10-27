@@ -23,7 +23,16 @@ body {
 .mainheader {
 	background-color:#0000aa;
 	color:#ffffff;
-
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#666666+1,000000+100 */
+background: #666666; /* Old browsers */
+background: -moz-linear-gradient(top,  #666666 1%, #000000 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#666666), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #666666 1%,#000000 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #666666 1%,#000000 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #666666 1%,#000000 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #666666 1%,#000000 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666666', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+		
 
 }
 
