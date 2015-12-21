@@ -180,7 +180,7 @@ if ($mode == "savetag") {
 }
 
 
-if ($mode == "gettag") {
+if ($mode == "gettag" || $mode == "register") {
 if ($tagId != "") {
 // /			$MaincrudEngine->enableTracing(1);			
 	$MaincrudEngine->changeDatabase($db_name);			
