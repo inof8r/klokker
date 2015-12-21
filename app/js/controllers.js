@@ -45,7 +45,7 @@ timeclockControllers.controller("HomeCtrl", function($scope, $http) {
 
 
 timeclockControllers.controller("TagsListCtrl", function($scope, $http) {
-  $http.get('data/gateway.php').
+  $http.get('data/gateway.php?mode=gettag').
     success(function(data, status, headers, config) {
       $scope.tags = data.data;
 		$scope.authorized = data.authorized;
@@ -207,5 +207,18 @@ timeclockControllers.controller('TagTypeListController', function($scope, $http,
 	$scope.selectedTagTypeId = null;
     $scope.data = tagTypeService.getTagTypes();
 });
+
+
+timeclockControllers.controller("RecordsListCtrl", function($scope, $http) {
+  $http.get('data/gateway.php?mode=records').
+    success(function(data, status, headers, config) {
+      $scope.tags = data.data;
+		$scope.authorized = data.authorized;
+    }).
+    error(function(data, status, headers, config) {
+      // log error
+    });
+});
+
 
 

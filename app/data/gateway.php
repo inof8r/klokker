@@ -18,8 +18,6 @@ if ($mode == "login") {
 	$result = $AuthManagerService->auth_user($username, $password);
 
 	$data = json_decode($result);	
-	print $result;
-	exit;
 }
 
 if ($mode == "logout") {
@@ -35,8 +33,6 @@ if ($mode == "logout") {
 	$result["authorized"] = "0";
 	$result["result"] = "success";
 	$data = json_encode($result);
-	print $data;
-	exit;
 }
 
 $UserisAuthorized = 0;
@@ -59,8 +55,6 @@ if ($mode == "home") {
 	$returnvals[0]["authorized"] = $UserisAuthorized;
 
 	$data = json_encode($returnvals);
-	print $data;
-	exit;
 }
 
 if ($mode == "getusers") {
@@ -78,16 +72,77 @@ if ($mode == "getusers") {
 	
 	$data = json_encode($returnvalsData);	
 	
-	print $data;
-	exit;
 }
+
+if ($mode == "records") {
+	$MaincrudEngine->changeDatabase($db_name);			
+	$returnvalsDB = $MaincrudEngine->read("timeclock_activities", "", "*");    
+	// decorate
+	$stringTool = new StringTools();
+	
+	foreach($returnvalsDB as $dta) {
+		$finalItem = Array();
+		$finalItem["id"] = $i["id"];
+		$finalItem["userid"] = $i["userid"];		
+		$ownerParams = $MaincrudEngine->read("users", "WHERE id='" . $i["userid"] . "'", "*");    		
+		$finalItem["ownername"] = urldecode($ownerParams[0]["fullname"]);
+		$finalItem["registered_time"] = $i["registered_time"];				
+
+
+	
+	
+	if ($dta["isstart"] == "0") {
+		$registered_dbtime = date("Y-m-d H:i:s", strtotime($dta["registered_time"]));
+		$user_data = $MaincrudEngine->read( "users", "WHERE id='" .  $dta["userid"]. "'", "id,fullname");
+		$prev_record = $MaincrudEngine->read( "timeclock_activities", "WHERE userid='" .  $dta["userid"]. "' AND registered_time<'" . $registered_dbtime . "' AND isstart='1' ORDER BY registered_time DESC LIMIT 0,1", "*");
+		if ($prev_record[0]["id"] == "") {
+			if (date("d", strtotime($prev_record[0]["registered_time"])) != date("d", strtotime($dta["registered_time"]))) {
+				$cur_project["registered_time"] = date("d-m-Y", strtotime($prev_record[0]["registered_time"]))  . " - " . date("d-m-Y", strtotime($dta["registered_time"])) ;			
+			} else {
+				$cur_project["registered_time"] =  date("d-m-Y", strtotime($dta["registered_time"])) ;
+			}
+			$cur_project["tijd"] = date("H:i:s", strtotime($prev_record[0]["registered_time"])) . " t/m " . date("H:i:s", strtotime($dta["registered_time"]));	
+			$cur_project["ownername"] = $user_data[0]["fullname"] . " " . $dta["id"] . " prvid:" . $prev_record[0]["id"];			
+			$cur_project["amount"] = $testDur;
+
+			$cur_project["rowparams"]["norowclick"] = "1";
+
+		
+		} else {
+			$hour_num = strtotime($dta["registered_time"]) - strtotime($prev_record[0]["registered_time"]);		
+			$testDur = $stringTool->formatDuration($hour_num);
+		
+			if (date("d", strtotime($prev_record[0]["registered_time"])) != date("d", strtotime($dta["registered_time"]))) {
+				$cur_project["registered_time"] = date("d-m-Y", strtotime($prev_record[0]["registered_time"]))  . " - " . date("d-m-Y", strtotime($dta["registered_time"])) ;			
+			} else {
+				$cur_project["registered_time"] =  date("d-m-Y", strtotime($dta["registered_time"])) ;
+			}
+
+			$cur_project["tijd"] = date("H:i:s", strtotime($prev_record[0]["registered_time"])) . " t/m " . date("H:i:s", strtotime($dta["registered_time"]));	
+			$cur_project["ownername"] = urldecode($user_data[0]["fullname"]);			
+			$cur_project["amount"] = $testDur;
+
+			$cur_project["rowparams"]["norowclick"] = "1";
+
+	
+			$hourtotal += $hour_num;	
+		}	
+		$returnvalsData[] = $cur_project;		
+	}
+	
+	}
+
+	
+	$returnvals["authorized"] = $UserisAuthorized;	
+	$returnvals["data"] = $returnvalsData;
+	$data = json_encode($returnvals);
+}
+
 
 if ($mode == "gettagtypes") {
 	$MaincrudEngine->changeDatabase($db_name);					
 	$getTagTypes = $MaincrudEngine->read("bb_smartag_types", "","*");
 	$data = json_encode($getTagTypes);	
-	print $data;
-	exit;
 }
 
 
@@ -124,6 +179,8 @@ if ($mode == "savetag") {
 
 }
 
+
+if ($mode == "gettag") {
 if ($tagId != "") {
 // /			$MaincrudEngine->enableTracing(1);			
 	$MaincrudEngine->changeDatabase($db_name);			
@@ -212,6 +269,7 @@ if ($tagId != "") {
 	$returnvals	["authorized"] = $UserisAuthorized;	
 	$returnvals["data"] = $returnvalsData;
 	$data = json_encode($returnvals);	
+}
 }
 
 

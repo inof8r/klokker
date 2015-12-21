@@ -51,6 +51,10 @@ timeclockApp.config(['$routeProvider',
         templateUrl: 'partials/tag-register.html',
         controller: 'TagRegisterCtrl'
       }).
+      when('/records', {
+        templateUrl: 'partials/records-list.html',
+        controller: 'RecordsListCtrl'
+      }).
       when('/projects', {
         templateUrl: 'partials/project-list.html',
         controller: 'ProjectsListCtrl'
