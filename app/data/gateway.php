@@ -17,7 +17,7 @@ if ($mode == "login") {
 	$password = $_POST["password"];
 	$result = $AuthManagerService->auth_user($username, $password);
 
-	$data = json_decode($result);	
+	$data = $result;	
 }
 
 if ($mode == "logout") {
@@ -120,7 +120,7 @@ if ($mode == "records") {
 
 			$cur_project["tijd"] = date("H:i:s", strtotime($prev_record[0]["registered_time"])) . " t/m " . date("H:i:s", strtotime($dta["registered_time"]));	
 			$cur_project["ownername"] = urldecode($user_data[0]["fullname"]);			
-			$cur_project["amount"] = $testDur;
+			$cur_project["amount	"] = $testDur;
 
 			$cur_project["rowparams"]["norowclick"] = "1";
 
