@@ -76,7 +76,7 @@ if ($mode == "getusers") {
 
 if ($mode == "records") {
 	$MaincrudEngine->changeDatabase($db_name);			
-	$returnvalsDB = $MaincrudEngine->read("timeclock_activities", " ORDER BY registered_time DESC", "*");    
+	$returnvalsDB = $MaincrudEngine->read("timeclock_activities", " ORDER BY registered_time,id DESC", "*");    
 	// decorate
 	$stringTool = new StringTools();
 	
