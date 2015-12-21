@@ -69,7 +69,7 @@ timeclockControllers.controller('TagRegisterCtrl', ['$scope', '$routeParams', 'T
     $scope.$on('$viewContentLoaded', function() {
     //call it here
 //    alert("viewContentLoaded" + $scope.tags);
-	Android.receiveMessage("TagRegisterCtrl:" + msg);
+	Android.receiveMessage("TagRegisterCtrl:" + tagId);
 	});
     
 }]);
